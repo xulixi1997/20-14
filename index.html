@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山东凯瑞网络科技有限公司 | 智能制造与自动化工程专家</title>
+    <meta name="description" content="山东凯瑞网络科技有限公司致力于为工业企业提供先进的自动化工程、智能制造解决方案及工业互联网服务。">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans SC"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0B1120',
+                            primary: '#0F172A', 
+                            accent: '#06B6D4', // Cyan 500
+                            light: '#F8FAFC'
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to right bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)), url('https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=1920')",
+                        'tech-pattern': "linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9)), url('https://images.pexels.com/photos/1743366/pexels-photo-1743366.jpeg?auto=compress&cs=tinysrgb&w=1920')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        /* Hide scrollbar for gallery but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-300 bg-brand-dark overflow-x-hidden">
+
+    <!-- 1. Navigation (Sticky Glassmorphism) -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 top-0 border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-12">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-blue-600 rounded flex items-center justify-center text-white font-bold text-xl">
+                        K
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-white tracking-wider">山东凯瑞网络科技</h1>
+                        <p class="text-xs text-cyan-400 uppercase tracking-widest">SDKairui Tech</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">首页</a>
+                    <a href="#about" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">关于我们</a>
+                    <a href="#services" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">核心服务</a>
+                    <a href="#solutions" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">解决方案</a>
+                    <a href="#cases" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">项目案例</a>
+                    <a href="#contact" class="px-5 py-2 rounded bg-cyan-600 hover:bg-cyan-500 text-white font-bold transition-all shadow-[0_0_15px_rgba(6,182,212,0.5)]">联系我们</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-cyan-400 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-primary absolute w-full border-b border-slate-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-white hover:bg-slate-800 rounded">首页</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-300 hover:bg-slate-800 rounded">关于我们</a>
+                <a href="#services" class="block px-3 py-2 text-base font-medium text-gray-300 hover:bg-slate-800 rounded">核心服务</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-cyan-400 hover:bg-slate-800 rounded">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <section id="home" class="relative h-screen min-h-[600px] flex items-center bg-hero-pattern bg-cover bg-center bg-fixed">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-16">
+            <div class="lg:w-2/3">
+                <div class="inline-block px-4 py-1 mb-4 border border-cyan-500/30 rounded-full bg-cyan-500/10 backdrop-blur-sm">
+                    <span class="text-cyan-400 font-semibold tracking-wide text-sm">智能制造 · 自动化工程 · 工业互联网</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-6">
+                    重塑工业 <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 text-glow">数字未来</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-slate-300 mb-10 font-light leading-relaxed">
+                    山东凯瑞网络科技致力于为制造业提供全栈式自动化解决方案。从边缘计算到云端分析，我们助力企业实现从"制造"到"智造"的飞跃。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="px-8 py-4 rounded bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-lg text-center transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] flex items-center justify-center gap-2">
+                        立即咨询 <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#cases" class="px-8 py-4 rounded border border-slate-500 hover:border-white text-slate-300 hover:text-white font-bold text-lg text-center transition-all">
+                        查看案例
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-2xl opacity-50"></i>
+        </div>
+    </section>
+
+    <!-- 3. Ticker/Partners (Trust Signals) -->
+    <section class="border-b border-slate-800 bg-slate-900/50 py-6">
+        <div class="max-w-7xl mx-auto px-4 overflow-hidden">
+            <p class="text-center text-sm text-slate-500 mb-4 uppercase tracking-widest">技术合作伙伴 & 生态联盟</p>
+            <div class="flex justify-center flex-wrap gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <!-- Using Text as logos for speed/reliability, normally these are SVGs -->
+                <span class="text-xl font-bold text-white flex items-center gap-2"><i class="fab fa-aws"></i> CloudBase</span>
+                <span class="text-xl font-bold text-white flex items-center gap-2"><i class="fab fa-google"></i> TensorFlow</span>
+                <span class="text-xl font-bold text-white flex items-center gap-2"><i class="fas fa-microchip"></i> Siemens PLC</span>
+                <span class="text-xl font-bold text-white flex items-center gap-2"><i class="fas fa-network-wired"></i> Huawei IoT</span>
+                <span class="text-xl font-bold text-white flex items-center gap-2"><i class="fas fa-database"></i> Oracle Mfg</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. About Us Snippet -->
+    <section id="about" class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                    <img src="https://images.pexels.com/photos/3862632/pexels-photo-3862632.jpeg?auto=compress&cs=tinysrgb&w=800" alt="工程师团队" class="relative rounded-lg shadow-2xl w-full object-cover h-96">
+                    <div class="absolute -bottom-6 -right-6 bg-slate-800 p-6 rounded-lg shadow-xl border border-slate-700 hidden md:block">
+                        <p class="text-cyan-400 text-3xl font-bold">10+</p>
+                        <p class="text-slate-400 text-sm">年行业深耕</p>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-cyan-400 font-bold uppercase tracking-wide mb-2">关于山东凯瑞</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">立足青岛，服务全球<br>不仅是开发商，更是您的工业顾问</h3>
+                    <p class="text-slate-400 mb-6 leading-relaxed">
+                        山东凯瑞网络科技有限公司坐落于美丽的海滨城市青岛，办公地址位于市北区黑龙江南路核心商圈。作为一家专注于智能制造与自动化工程的高新技术企业，我们拥有一支由资深系统架构师、电气工程师及算法专家组成的精英团队。
+                    </p>
+                    <p class="text-slate-400 mb-8 leading-relaxed">
+                        我们不只是交付代码或设备，我们提供的是从底层PLC控制到上层MES/ERP系统的全链路数字化转型方案。通过精准的数据采集与智能分析，帮助制造企业降本增效，迈向工业4.0。
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-cyan-500 mr-3"></i> <strong>本地化服务：</strong> 快速响应山东省内及周边及企业需求</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-cyan-500 mr-3"></i> <strong>定制化开发：</strong> 100% 贴合工厂实际生产流程</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-cyan-500 mr-3"></i> <strong>软硬一体化：</strong> 打通OT与IT的技术壁垒</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Key Statistics (Animated) -->
+    <section class="py-12 bg-gradient-to-r from-slate-900 to-slate-800 border-y border-slate-700">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-4xl font-bold text-white mb-2 counter" data-target="150">0</div>
+                <div class="text-sm text-cyan-400 uppercase tracking-widest">累计交付项目</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-white mb-2 counter" data-target="98">0</div>
+                <div class="text-sm text-cyan-400 uppercase tracking-widest">% 客户满意度</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-white mb-2 counter" data-target="24">0</div>
+                <div class="text-sm text-cyan-400 uppercase tracking-widest">小时 极速响应</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-white mb-2 counter" data-target="15">0</div>
+                <div class="text-sm text-cyan-400 uppercase tracking-widest">项 核心专利</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Core Services Grid -->
+    <section id="services" class="py-20 bg-brand-dark relative">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-cyan-400 font-bold uppercase tracking-wide mb-2">核心业务领域</h2>
+                <h3 class="text-3xl font-bold text-white mb-4">全栈式工业互联网服务</h3>
+                <p class="text-slate-400">我们将前沿的IT技术与传统的OT运营技术深度融合，构建安全、高效、可扩展的工业生态。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-cyan-500/50 card-hover group">
+                    <div class="w-14 h-14 bg-slate-700 rounded-lg flex items-center justify-center mb-6 group-hover:bg-cyan-600 transition-colors">
+                        <i class="fas fa-robot text-2xl text-cyan-400 group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">自动化产线改造</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">针对传统非标产线进行智能化升级，引入PLC控制、机器视觉检测与机械臂协作，大幅降低人工成本。</p>
+                    <a href="#" class="text-cyan-400 text-sm font-bold flex items-center group-hover:translate-x-2 transition-transform">了解详情 <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-cyan-500/50 card-hover group">
+                    <div class="w-14 h-14 bg-slate-700 rounded-lg flex items-center justify-center mb-6 group-hover:bg-cyan-600 transition-colors">
+                        <i class="fas fa-chart-line text-2xl text-cyan-400 group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">MES 生产执行系统</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">定制化开发MES系统，实现排产管理、质量追溯、物料管控的可视化，打通车间与管理层的信息孤岛。</p>
+                    <a href="#" class="text-cyan-400 text-sm font-bold flex items-center group-hover:translate-x-2 transition-transform">了解详情 <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-cyan-500/50 card-hover group">
+                    <div class="w-14 h-14 bg-slate-700 rounded-lg flex items-center justify-center mb-6 group-hover:bg-cyan-600 transition-colors">
+                        <i class="fas fa-wifi text-2xl text-cyan-400 group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">工业物联网 (IIoT)</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">通过传感器与网关设备，实时采集设备运行状态数据，利用边缘计算技术实现预测性维护与能耗管理。</p>
+                    <a href="#" class="text-cyan-400 text-sm font-bold flex items-center group-hover:translate-x-2 transition-transform">了解详情 <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-cyan-500/50 card-hover group">
+                    <div class="w-14 h-14 bg-slate-700 rounded-lg flex items-center justify-center mb-6 group-hover:bg-cyan-600 transition-colors">
+                        <i class="fas fa-vr-cardboard text-2xl text-cyan-400 group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">数字孪生工厂</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">利用3D建模与实时数据映射，在虚拟空间重现物理工厂，支持远程监控、仿真推演与应急预案模拟。</p>
+                    <a href="#" class="text-cyan-400 text-sm font-bold flex items-center group-hover:translate-x-2 transition-transform">了解详情 <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-cyan-500/50 card-hover group">
+                    <div class="w-14 h-14 bg-slate-700 rounded-lg flex items-center justify-center mb-6 group-hover:bg-cyan-600 transition-colors">
+                        <i class="fas fa-code-branch text-2xl text-cyan-400 group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">SCADA 系统集成</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">基于Web的现代化SCADA组态软件开发，支持多协议接入（Modbus, OPC UA），实现跨厂区集中管控。</p>
+                    <a href="#" class="text-cyan-400 text-sm font-bold flex items-center group-hover:translate-x-2 transition-transform">了解详情 <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-cyan-500/50 card-hover group">
+                    <div class="w-14 h-14 bg-slate-700 rounded-lg flex items-center justify-center mb-6 group-hover:bg-cyan-600 transition-colors">
+                        <i class="fas fa-shield-alt text-2xl text-cyan-400 group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">工业网络安全</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">为工控系统提供边界防护、入侵检测及数据加密服务，保障生产数据的安全性与业务连续性。</p>
+                    <a href="#" class="text-cyan-400 text-sm font-bold flex items-center group-hover:translate-x-2 transition-transform">了解详情 <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Detailed Feature Spotlight (Left/Right Layout) -->
+    <section class="py-20 bg-slate-900 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 order-2 lg:order-1">
+                    <img src="https://images.pexels.com/photos/2034892/pexels-photo-2034892.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Dashboard UI" class="rounded-xl shadow-2xl border border-slate-700 hover:scale-[1.02] transition-transform duration-500">
+                </div>
+                <div class="lg:w-1/2 order-1 lg:order-2">
+                    <div class="inline-block px-3 py-1 mb-4 rounded bg-blue-900/50 border border-blue-500/30 text-blue-300 text-xs font-bold uppercase">凯瑞·智脑中心</div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">可视化数据驾驶舱，<br>决策尽在掌握</h2>
+                    <p class="text-slate-400 mb-6 text-lg">
+                        告别繁琐的Excel报表。我们的“凯瑞智脑”通过直观的大屏展示，将复杂的生产数据转化为可执行的商业洞察。
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-cyan-500 flex items-center justify-center mt-1">
+                                <i class="fas fa-bolt text-white text-xs"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-white font-bold">实时监控</h4>
+                                <p class="text-slate-400 text-sm">毫秒级数据刷新，设备故障0延迟报警。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-cyan-500 flex items-center justify-center mt-1">
+                                <i class="fas fa-mobile-alt text-white text-xs"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-white font-bold">多端协同</h4>
+                                <p class="text-slate-400 text-sm">支持PC、平板、手机端同步访问，随时随地掌控生产。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Technology Stack -->
+    <section class="py-16 bg-brand-dark border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <h3 class="text-center text-white font-bold text-xl mb-10">我们的技术引擎</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <div class="bg-slate-800 p-4 rounded text-center border border-slate-700">
+                    <i class="fab fa-python text-3xl text-yellow-400 mb-2"></i>
+                    <p class="text-slate-300 font-medium">Python/AI</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded text-center border border-slate-700">
+                    <i class="fab fa-java text-3xl text-red-500 mb-2"></i>
+                    <p class="text-slate-300 font-medium">Java Spring</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded text-center border border-slate-700">
+                    <i class="fab fa-vuejs text-3xl text-green-400 mb-2"></i>
+                    <p class="text-slate-300 font-medium">Vue.js</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded text-center border border-slate-700">
+                    <i class="fas fa-database text-3xl text-blue-400 mb-2"></i>
+                    <p class="text-slate-300 font-medium">PostgreSQL</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded text-center border border-slate-700">
+                    <i class="fas fa-microchip text-3xl text-purple-400 mb-2"></i>
+                    <p class="text-slate-300 font-medium">PLC/Embedded</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded text-center border border-slate-700">
+                    <i class="fab fa-docker text-3xl text-blue-500 mb-2"></i>
+                    <p class="text-slate-300 font-medium">Docker/K8s</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Process Workflow -->
+    <section class="py-20 bg-tech-pattern bg-cover bg-fixed relative">
+        <div class="absolute inset-0 bg-slate-900/90"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white">项目实施流程</h2>
+                <p class="text-slate-400 mt-2">标准化交付体系，确保项目按时、按质上线</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <!-- Step 1 -->
+                <div class="relative text-center group">
+                    <div class="w-16 h-16 mx-auto bg-slate-800 border-2 border-cyan-500 rounded-full flex items-center justify-center text-xl font-bold text-white mb-4 relative z-10 group-hover:bg-cyan-600 transition-colors">1</div>
+                    <h4 class="text-white font-bold">需求调研</h4>
+                    <p class="text-slate-400 text-xs mt-2 px-2">现场勘查、痛点分析</p>
+                    <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-slate-700 -z-0"></div>
+                </div>
+                <!-- Step 2 -->
+                <div class="relative text-center group">
+                    <div class="w-16 h-16 mx-auto bg-slate-800 border-2 border-cyan-500 rounded-full flex items-center justify-center text-xl font-bold text-white mb-4 relative z-10 group-hover:bg-cyan-600 transition-colors">2</div>
+                    <h4 class="text-white font-bold">方案设计</h4>
+                    <p class="text-slate-400 text-xs mt-2 px-2">架构蓝图、技术选型</p>
+                    <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-slate-700 -z-0"></div>
+                </div>
+                <!-- Step 3 -->
+                <div class="relative text-center group">
+                    <div class="w-16 h-16 mx-auto bg-slate-800 border-2 border-cyan-500 rounded-full flex items-center justify-center text-xl font-bold text-white mb-4 relative z-10 group-hover:bg-cyan-600 transition-colors">3</div>
+                    <h4 class="text-white font-bold">开发实施</h4>
+                    <p class="text-slate-400 text-xs mt-2 px-2">敏捷开发、硬件部署</p>
+                    <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-slate-700 -z-0"></div>
+                </div>
+                <!-- Step 4 -->
+                <div class="relative text-center group">
+                    <div class="w-16 h-16 mx-auto bg-slate-800 border-2 border-cyan-500 rounded-full flex items-center justify-center text-xl font-bold text-white mb-4 relative z-10 group-hover:bg-cyan-600 transition-colors">4</div>
+                    <h4 class="text-white font-bold">联调测试</h4>
+                    <p class="text-slate-400 text-xs mt-2 px-2">全系统压力测试</p>
+                    <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-slate-700 -z-0"></div>
+                </div>
+                <!-- Step 5 -->
+                <div class="relative text-center group">
+                    <div class="w-16 h-16 mx-auto bg-slate-800 border-2 border-cyan-500 rounded-full flex items-center justify-center text-xl font-bold text-white mb-4 relative z-10 group-hover:bg-cyan-600 transition-colors">5</div>
+                    <h4 class="text-white font-bold">交付运维</h4>
+                    <p class="text-slate-400 text-xs mt-2 px-2">人员培训、长期维保</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Why Choose Us (Value Proposition) -->
+    <section class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 border-l-4 border-cyan-500 bg-slate-800/30">
+                    <h3 class="text-white font-bold text-xl mb-3">懂制造的IT团队</h3>
+                    <p class="text-slate-400">我们不仅仅懂代码，更懂PLC逻辑、液压系统与流水线工艺。沟通无障碍，需求不走样。</p>
+                </div>
+                <div class="p-6 border-l-4 border-blue-500 bg-slate-800/30">
+                    <h3 class="text-white font-bold text-xl mb-3">源码级交付</h3>
+                    <p class="text-slate-400">拒绝黑盒交付。我们支持源码与设计文档全套移交，让客户拥有完全的自主可控权。</p>
+                </div>
+                <div class="p-6 border-l-4 border-purple-500 bg-slate-800/30">
+                    <h3 class="text-white font-bold text-xl mb-3">7x24h 驻场支持</h3>
+                    <p class="text-slate-400">对于关键生产系统，我们提供山东省内4小时到场服务，保障生产线“永不掉线”。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. Case Studies Gallery -->
+    <section id="cases" class="py-20 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-cyan-400 font-bold uppercase tracking-wide mb-2">成功案例</h2>
+                    <h3 class="text-3xl font-bold text-white">见证智造力量</h3>
+                </div>
+                <a href="#" class="hidden md:inline-flex items-center text-slate-300 hover:text-white transition-colors">更多案例 <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Case 1 -->
+                <div class="group relative overflow-hidden rounded-xl h-80 cursor-pointer">
+                    <img src="https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=600" alt="汽车配件工厂" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-cyan-400 text-xs font-bold uppercase mb-2">青岛某汽车配件厂</span>
+                        <h4 class="text-white font-bold text-xl mb-1 group-hover:text-cyan-400 transition-colors">全自动焊接产线MES改造</h4>
+                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 mt-2">
+                            实现焊接机器人数据实时采集，生产效率提升35%，次品率降低12%。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Case 2 -->
+                <div class="group relative overflow-hidden rounded-xl h-80 cursor-pointer">
+                    <img src="https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=600" alt="仓储物流" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-cyan-400 text-xs font-bold uppercase mb-2">智慧物流园区</span>
+                        <h4 class="text-white font-bold text-xl mb-1 group-hover:text-cyan-400 transition-colors">AGV智能调度系统</h4>
+                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 mt-2">
+                            统筹调度50+台AGV小车，路径规划算法优化，出入库效率翻倍。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="group relative overflow-hidden rounded-xl h-80 cursor-pointer">
+                    <img src="https://images.pexels.com/photos/256297/pexels-photo-256297.jpeg?auto=compress&cs=tinysrgb&w=600" alt="能源管理" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-cyan-400 text-xs font-bold uppercase mb-2">化工集团</span>
+                        <h4 class="text-white font-bold text-xl mb-1 group-hover:text-cyan-400 transition-colors">全厂能源管控中心 (EMS)</h4>
+                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 mt-2">
+                            水电气热全要素监控，年节约能耗成本超200万元。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. Client Testimonials -->
+    <section class="py-20 bg-brand-dark">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <i class="fas fa-quote-left text-4xl text-slate-700 mb-6"></i>
+            <h3 class="text-2xl md:text-3xl font-medium text-white mb-8 italic leading-relaxed">
+                "山东凯瑞团队展现了极高的专业素养。他们不仅帮我们搭建了系统，更帮我们梳理了混乱的生产流程。现在的车间管理井井有条，数据一目了然。"
+            </h3>
+            <div class="flex items-center justify-center gap-4">
+                <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Client" class="w-12 h-12 rounded-full object-cover border-2 border-cyan-500">
+                <div class="text-left">
+                    <p class="text-white font-bold">李总</p>
+                    <p class="text-cyan-400 text-sm">青岛某精密机械有限公司 总经理</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. Team Section -->
+    <section class="py-16 bg-slate-900 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl font-bold text-white">核心专家团队</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-brand-dark p-6 rounded-lg text-center border border-slate-800 hover:border-cyan-500 transition-colors">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-slate-700 mb-4 overflow-hidden">
+                         <img src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=200" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-white font-bold">张工</h4>
+                    <p class="text-slate-500 text-sm mb-2">首席架构师</p>
+                    <p class="text-slate-600 text-xs">15年工控开发经验</p>
+                </div>
+                <div class="bg-brand-dark p-6 rounded-lg text-center border border-slate-800 hover:border-cyan-500 transition-colors">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-slate-700 mb-4 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=200" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-white font-bold">王经理</h4>
+                    <p class="text-slate-500 text-sm mb-2">项目总监</p>
+                    <p class="text-slate-600 text-xs">PMP认证专家</p>
+                </div>
+                <div class="bg-brand-dark p-6 rounded-lg text-center border border-slate-800 hover:border-cyan-500 transition-colors">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-slate-700 mb-4 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=200" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-white font-bold">刘工</h4>
+                    <p class="text-slate-500 text-sm mb-2">算法工程师</p>
+                    <p class="text-slate-600 text-xs">视觉识别领域</p>
+                </div>
+                <div class="bg-brand-dark p-6 rounded-lg text-center border border-slate-800 hover:border-cyan-500 transition-colors">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-slate-700 mb-4 overflow-hidden">
+                         <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-white font-bold">赵工</h4>
+                    <p class="text-slate-500 text-sm mb-2">电气工程师</p>
+                    <p class="text-slate-600 text-xs">PLC/电气柜设计</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. News/Insights -->
+    <section class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-white mb-10 border-l-4 border-cyan-500 pl-4">行业动态 & 公司新闻</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="bg-slate-900 rounded-lg overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/5473950/pexels-photo-5473950.jpeg?auto=compress&cs=tinysrgb&w=600" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-cyan-500 text-xs mb-2">2023-10-15</div>
+                        <h3 class="text-white font-bold mb-3 hover:text-cyan-400 cursor-pointer">工业4.0时代，中小企业如何低成本转型？</h3>
+                        <p class="text-slate-400 text-sm line-clamp-3">探讨在资金有限的情况下，如何通过关键节点的自动化改造实现效益最大化...</p>
+                    </div>
+                </article>
+                <article class="bg-slate-900 rounded-lg overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=600" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-cyan-500 text-xs mb-2">2023-09-22</div>
+                        <h3 class="text-white font-bold mb-3 hover:text-cyan-400 cursor-pointer">热烈祝贺我司入选“青岛市专精特新”企业名单</h3>
+                        <p class="text-slate-400 text-sm line-clamp-3">这是对山东凯瑞在智能制造领域持续创新能力的肯定，我们将继续加大研发投入...</p>
+                    </div>
+                </article>
+                <article class="bg-slate-900 rounded-lg overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-cyan-500 text-xs mb-2">2023-08-10</div>
+                        <h3 class="text-white font-bold mb-3 hover:text-cyan-400 cursor-pointer">机器视觉技术在表面缺陷检测中的应用实践</h3>
+                        <p class="text-slate-400 text-sm line-clamp-3">深度学习算法如何解决传统AOI检测误报率高的问题，技术干货分享...</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 15. FAQ Section -->
+    <section class="py-16 bg-slate-900">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-center text-2xl font-bold text-white mb-8">常见问题</h2>
+            <div class="space-y-4">
+                <details class="bg-brand-dark p-4 rounded border border-slate-700 cursor-pointer group">
+                    <summary class="text-slate-200 font-medium flex justify-between items-center list-none">
+                        你们的项目开发周期一般是多久？
+                        <span class="text-cyan-400 group-open:rotate-180 transition-transform"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-slate-400 text-sm">视项目规模而定。小型自动化改造通常在2-4周，大型MES或综合系统集成通常需要2-4个月。我们在初期调研后会给出详细的时间表。</p>
+                </details>
+                <details class="bg-brand-dark p-4 rounded border border-slate-700 cursor-pointer group">
+                    <summary class="text-slate-200 font-medium flex justify-between items-center list-none">
+                        由于我们的设备老旧，可以进行联网改造吗？
+                        <span class="text-cyan-400 group-open:rotate-180 transition-transform"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-slate-400 text-sm">可以。我们擅长处理异构设备接入，对于没有通讯接口的老旧设备，可以通过加装传感器（电流、振动等）或IO模块的方式实现数字化采集。</p>
+                </details>
+                <details class="bg-brand-dark p-4 rounded border border-slate-700 cursor-pointer group">
+                    <summary class="text-slate-200 font-medium flex justify-between items-center list-none">
+                        是否提供售后服务？
+                        <span class="text-cyan-400 group-open:rotate-180 transition-transform"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-slate-400 text-sm">当然。我们提供1年的免费质保期，期间软件bug免费修复，硬件问题协助处理。质保期后可选购年度维保服务。</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 16. CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-cyan-900 to-blue-900 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">准备好升级您的工厂了吗？</h2>
+            <p class="text-cyan-100 text-lg mb-8">预约免费的现场调研服务，我们的专家团队将为您量身定制智能化升级方案。</p>
+            <a href="#contact" class="inline-block px-10 py-4 bg-white text-blue-900 font-bold text-xl rounded shadow-xl hover:bg-slate-100 transition-colors">
+                免费获取方案
+            </a>
+        </div>
+    </section>
+
+    <!-- 17. Contact Section -->
+    <section id="contact" class="py-20 bg-brand-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-cyan-400 font-bold uppercase tracking-wide mb-2">联系我们</h2>
+                    <h3 class="text-3xl font-bold text-white mb-8">期待与您的合作</h3>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-cyan-400 text-xl border border-slate-700">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-white font-bold text-lg">公司地址</h4>
+                                <p class="text-slate-400 mt-1">山东省青岛市市北区黑龙江南路2号甲609户</p>
+                                <p class="text-slate-500 text-xs mt-1">（核心商务区，交通便利）</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-cyan-400 text-xl border border-slate-700">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-white font-bold text-lg">咨询热线</h4>
+                                <p class="text-slate-400 mt-1">130-5958-7218</p>
+                                <p class="text-slate-500 text-xs mt-1">（周一至周五 9:00 - 18:00）</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-cyan-400 text-xl border border-slate-700">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-white font-bold text-lg">电子邮箱</h4>
+                                <p class="text-slate-400 mt-1">dev@sdkairuitech.asia</p>
+                                <p class="text-slate-500 text-xs mt-1">（项目需求、商务合作）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700">
+                    <form class="space-y-6" onsubmit="event.preventDefault(); alert('感谢您的留言，我们会尽快联系您！');">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-slate-400 text-sm font-bold mb-2">姓名</label>
+                                <input type="text" class="w-full bg-slate-900 border border-slate-700 rounded p-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="您的称呼">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 text-sm font-bold mb-2">电话</label>
+                                <input type="tel" class="w-full bg-slate-900 border border-slate-700 rounded p-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="联系电话">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-slate-400 text-sm font-bold mb-2">企业名称</label>
+                            <input type="text" class="w-full bg-slate-900 border border-slate-700 rounded p-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="您的公司名称">
+                        </div>
+                        <div>
+                            <label class="block text-slate-400 text-sm font-bold mb-2">需求描述</label>
+                            <textarea class="w-full bg-slate-900 border border-slate-700 rounded p-3 text-white h-32 focus:outline-none focus:border-cyan-500 transition-colors" placeholder="请简要描述您的项目需求..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-4 rounded shadow-lg transform hover:-translate-y-1 transition-all">
+                            发送留言
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 18. Footer -->
+    <footer class="bg-black py-12 border-t border-slate-800 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-cyan-600 rounded flex items-center justify-center text-white font-bold">K</div>
+                        <span class="text-white font-bold text-lg">山东凯瑞</span>
+                    </div>
+                    <p class="text-slate-500 leading-relaxed">
+                        专注于智能制造与工业自动化领域的创新型科技企业。
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">快速链接</h4>
+                    <ul class="space-y-2 text-slate-500">
+                        <li><a href="#home" class="hover:text-cyan-400">首页</a></li>
+                        <li><a href="#services" class="hover:text-cyan-400">核心服务</a></li>
+                        <li><a href="#cases" class="hover:text-cyan-400">项目案例</a></li>
+                        <li><a href="#about" class="hover:text-cyan-400">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">服务领域</h4>
+                    <ul class="space-y-2 text-slate-500">
+                        <li>工业物联网平台</li>
+                        <li>MES生产管理系统</li>
+                        <li>机器视觉检测</li>
+                        <li>PLC自动化控制</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">关注我们</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-cyan-600 transition-all"><i class="fab fa-weixin"></i></a>
+                        <a href="#" class="w-10 h-10 rounded bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-cyan-600 transition-all"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-slate-600 text-center md:text-left">
+                    &copy; 2023 山东凯瑞网络科技有限公司. All rights reserved. 
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0 text-slate-600">
+                    <a href="#" class="hover:text-slate-400">隐私政策</a>
+                    <a href="#" class="hover:text-slate-400">服务条款</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // 1. Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-nav', 'shadow-lg');
+            } else {
+                navbar.classList.remove('glass-nav', 'shadow-lg');
+            }
+        });
+
+        // 2. Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // 3. Number Counter Animation (Intersection Observer)
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; 
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target + "+";
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        let hasAnimated = false;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    animateCounters();
+                    hasAnimated = true;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.counter').parentElement.parentElement;
+        if(statsSection) observer.observe(statsSection);
+
+    </script>
+</body>
+</html>
